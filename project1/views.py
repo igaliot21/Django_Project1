@@ -2,11 +2,27 @@ from django.http import HttpResponse
 from django.template import Template, Context
 import datetime
 
+class Persona(object):
+    def __init__(self,nombre,apellido):
+        self.nombre=nombre
+        self.apellido=apellido
+
 def helloWorld(request):
     fichero_plantilla=open("project1/templates/helloworld.html") 
     tmpl_helloWorld=Template(fichero_plantilla.read())
     fichero_plantilla.close()
     ctx=Context()
+    documento=tmpl_helloWorld.render(ctx)
+    return HttpResponse(documento)
+
+def helloWorldVar(request):
+    p=Persona("Jose Mª","Izquierdo")
+    caracteristica="gilipollas"
+    ahora=datetime.datetime.now()
+    fichero_plantilla=open("project1/templates/helloworldvar.html") 
+    tmpl_helloWorld=Template(fichero_plantilla.read())
+    fichero_plantilla.close()
+    ctx=Context({"persona":p,"caracteristica":caracteristica, "ahora":ahora})
     documento=tmpl_helloWorld.render(ctx)
     return HttpResponse(documento)
 
