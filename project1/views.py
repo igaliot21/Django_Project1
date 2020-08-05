@@ -26,6 +26,19 @@ def helloWorldVar(request):
     documento=tmpl_helloWorld.render(ctx)
     return HttpResponse(documento)
 
+def helloWorldVar2(request):
+    p=Persona("Jose Mª","Izquierdo") 
+    caracteristica="gilipollas"
+    ahora=datetime.datetime.now()
+    temas=["plantillas","modelos","formularios","vistas","despliegue de aplicación"]
+    temasVacio=[]
+    fichero_plantilla=open("project1/templates/helloworldvar2.html") 
+    tmpl_helloWorld=Template(fichero_plantilla.read())
+    fichero_plantilla.close()
+    ctx=Context({"persona":p,"caracteristica":caracteristica, "ahora":ahora, "temas":temas})
+    documento=tmpl_helloWorld.render(ctx)
+    return HttpResponse(documento)    
+
 def getData(request):
     fechaActual=datetime.datetime.now()
     documento= "<html><body><h3>Fecha y hora actuales %s </h3> </body></html>" % fechaActual
