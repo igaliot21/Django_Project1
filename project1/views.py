@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import Template, Context, loader
+from django.shortcuts import render
 import datetime
 
 class Persona(object):
@@ -54,7 +55,18 @@ def helloWorldVar3(request):
     #ctx=Context({"persona":p,"caracteristica":caracteristica, "ahora":ahora, "temas":temas})
     documento=fichero_plantilla.render({"persona":p,"caracteristica":caracteristica, "ahora":ahora, "temas":temas})
     
-    return HttpResponse(documento)        
+    return HttpResponse(documento)     
+
+def helloWorldVar4(request):
+    p=Persona("Jose Mª","Izquierdo") 
+    caracteristica="gilipollas"
+    ahora=datetime.datetime.now()
+    temas=["plantillas","modelos","formularios","vistas","despliegue de aplicación"]
+    temasVacio=[]
+    #fichero_plantilla=loader.get_template("helloworldvar4.html")
+    #documento=fichero_plantilla.render({"persona":p,"caracteristica":caracteristica, "ahora":ahora, "temas":temas})
+
+    return render(request, "helloworldvar4.html", {"persona":p,"caracteristica":caracteristica, "ahora":ahora, "temas":temas})
 
 def getData(request):
     fechaActual=datetime.datetime.now()

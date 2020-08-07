@@ -1,0 +1,33 @@
+<html>
+    <body>
+
+        {% include "barra.html" %}
+
+        <h3>
+            Hello World!!
+        </h3>
+
+        <p>My name is: {{persona.nombre}} {{persona.apellido}} y soy {{caracteristica | upper}} a d&iacutea: {{ahora.day}}/{{ahora.month}}/{{ahora.year}}</p>
+        
+        <br/>
+
+        {% if persona.apellido == 'Izquierdo' %}
+            <p>El curso lo imparte un gilipollas</p>
+        {% else %}
+            <p>El curso lo imparte un gilipollas, pero otro, muy distinto</p>
+        {% endif %}
+
+        <br/>
+
+        <p><strong>Temas del curso</strong></p>
+        <ul>
+            {% if temas %}
+                {% for item in temas %}
+                    <li>{{item | first | upper}}</li>
+                {% endfor %}
+            {% else %}
+                <li>No hay elementos a mostrar</li>
+            {% endif %}
+        </ul>
+    </bodyp>
+</html>
