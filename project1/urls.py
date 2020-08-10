@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from project1.views import helloWorld, getData, calculaEdad, helloWorldVar, helloWorldVar2, helloWorldVar3, helloWorldVar4
+from project1.views import helloWorld, getData, calculaEdad, helloWorldVar, helloWorldVar2, helloWorldVar3, helloWorldVar4, cursoc, cursocss
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('helloWorldVar2/', helloWorldVar2),
     path('helloWorldVar3/', helloWorldVar3),
     path('helloWorldVar4/', helloWorldVar4),
+    path('cursoc/', cursoc),
+    path('cursocss/', cursocss),
     path('getdata/', getData),
     path('edad/<int:edad>/<int:anyo>', calculaEdad)
 ]
